@@ -1,53 +1,57 @@
-function parser() {
-    var xmlhttp = XMLHttpRequest();
-    xmlhttp.open("GET", "http//:sayumm.cloudapp.net/latest", true);
+// function parser() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "http://crossorigin.me/http://sayumm.cloudapp.net:5000/latest", true);
     xmlhttp.send();
     xmlhttp.onload = myCallback;
-}
+
 
 
 function myCallback(e) {
-    xmlDoc = JSON.parse(this.responseXML);
-    document.getElementById("sentiment").value = xmlDoc.sentiment; //sentiment
 
-    for (var i = 0; i < responseXML.transcript.length; i++) {
-        var transcript = " " + responseXML.transcript[i];
+    xmlDoc = JSON.parse(xmlhttp.responseText);
+   	xmlDoc = xmlDoc.result[0];
+   	xmlDoc = JSON.parse(xmlDoc.id);
+   	console.log(xmlDoc)
+   	var transcript = ''
+    for (var i = 0; i < xmlDoc.transcript.length; i++) {	
+        transcript += ' ' + xmlDoc.transcript[i][0];
     }
+    console.log(transcript)
 
+	document.getElementById("sentiment").innerHTML = " " + xmlDoc.sentiment.docSentiment.type; // temp text
 
-    document.getElementById("speechtext").value = transcript; // temp text
+    document.getElementById("speechtext").innerHTML = transcript; // temp text
 
-    document.getElementById("ums_total").value = responseXML.ums_total; // ums total
+    document.getElementById("ums_total").innerHTML = xmlDoc.ums_total; // ums total
 
-    document.getElementById("wpm").value = responseXML.wpm; // wrods per min
+    document.getElementById("wpm").innerHTML = xmlDoc.wpm + ' words'; // wrods per min
 
-    document.getElementById("upm").value = responseXML.upm; // upms per min
+    document.getElementById("upm").innerHTML = xmlDoc.upm; // upms per min
 
-    document.getElementById("words_total").value = responseXML.words_total; // words total
+    console.log(xmlDoc.words_total)
+    document.getElementById("words_total").innerHTML = transcript.length; // words total
 
     var array =  ["including","indeed","further", "either","neither","also","moreover","furthermore","actually",	
 		"additionally","alternatively"];
-		var trans_total=0;
+	var trans_total=0;
+	console.log(array.indexOf('including'));
+	console.log(array.indexOf('bugg'));
 
-for {var j = 0; j <responseXML.transcript.length; j++}{
-
-
-
-
-	if(array.indexOf(responseXML.transcript[j]) > (-1) )
-
-			trans_total += ;
-}  
+	for (var j = 0; j <xmlDoc.transcript.length; j++){
+		if(array.indexOf(xmlDoc.transcript[j]) > -1){
+			trans_total = trans_total +1;
+		}
+	}
+	document.getElementById("trans_total").innerHTML = trans_total;
+	return 0;
 }
- document.getElementById("trans_total").value = trans_total;
-
 /*
 
-document.getElementById("word_times").value = responseXML.word_times;
+document.getElementById("word_times").value = xmlDoc.word_times;
 
-document.getElementById("").value = responseXML.;
+document.getElementById("").value = xmlDoc.;
 
-document.getElementById("").value = responseXML.;
+document.getElementById("").value = xmlDoc.;
 
 
 

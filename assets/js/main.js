@@ -56,6 +56,13 @@ function colorByConfidence(results){
    }
    myDiv.innerHTML = htmlToInsert;
 }
+
+function getRandom() {
+  return(String(Math.random() * 10));
+		}
+   document.getElementById("random").innerHTML = getRandom().substring(0,5);
+
+ 
 /*
 
 document.getElementById("word_times").value = xmlDoc.word_times;

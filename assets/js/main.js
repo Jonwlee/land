@@ -16,7 +16,6 @@ function myCallback(e) {
     for (var i = 0; i < xmlDoc.transcript.length; i++) {	
         transcript += ' ' + xmlDoc.transcript[i][0];
     }
-    console.log(transcript)
 
 	document.getElementById("sentiment").innerHTML = " " + xmlDoc.sentiment.docSentiment.type; // temp text
 
@@ -28,15 +27,11 @@ function myCallback(e) {
 
     document.getElementById("upm").innerHTML = Math.round(xmlDoc.upm) + ' "umms"'; // upms per min
 
-    console.log(xmlDoc.words_total)
     document.getElementById("words_total").innerHTML = transcript.length; // words total
 
     var array =  ["including","indeed","further", "either","neither","also","moreover","furthermore","actually",	
 		"additionally","alternatively"];
 	var trans_total=0;
-	console.log(array.indexOf('including'));
-	console.log(array.indexOf('bugg'));
-
 	for (var j = 0; j <xmlDoc.transcript.length; j++){
 		if(array.indexOf(xmlDoc.transcript[j]) > -1){
 			trans_total = trans_total +1;
@@ -59,7 +54,6 @@ function colorByConfidence(results){
        color = Math.round((results[i][1])*255.0);
        htmlToInsert+='<span style="background-color:rgba('+color+','+color+',255,0.5)">'+ results[i][0] + ' </span>';
    }
-   console.log(htmlToInsert)
    myDiv.innerHTML = htmlToInsert;
 }
 /*

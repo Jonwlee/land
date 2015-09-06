@@ -20,13 +20,13 @@ function myCallback(e) {
 
 	document.getElementById("sentiment").innerHTML = " " + xmlDoc.sentiment.docSentiment.type; // temp text
 
-    document.getElementById("speechtext").innerHTML = transcript; // temp text
+    //document.getElementById("speechtext").innerHTML = transcript; // temp text
 
     document.getElementById("ums_total").innerHTML = xmlDoc.ums_total; // ums total
 
-    document.getElementById("wpm").innerHTML = xmlDoc.wpm + ' words'; // wrods per min
+    document.getElementById("wpm").innerHTML = Math.round(xmlDoc.wpm) + ' words'; // wrods per min
 
-    document.getElementById("upm").innerHTML = xmlDoc.upm; // upms per min
+    document.getElementById("upm").innerHTML = Math.round(xmlDoc.upm) + ' "umms"'; // upms per min
 
     console.log(xmlDoc.words_total)
     document.getElementById("words_total").innerHTML = transcript.length; // words total
@@ -43,7 +43,24 @@ function myCallback(e) {
 		}
 	}
 	document.getElementById("trans_total").innerHTML = trans_total;
+	colorByConfidence(xmlDoc.transcript);
 	return 0;
+}
+
+
+
+function colorByConfidence(results){
+	console.log('colorbyconi')
+   var myDiv = document.getElementById('speechtext');
+   var i = 0;
+   var color = 0;
+   var htmlToInsert = '';
+   for(i=0; i<results.length; i++){
+       color = Math.round((results[i][1])*255.0);
+       htmlToInsert+='<span style="background-color:rgba('+color+','+color+',255,0.5)">'+ results[i][0] + ' </span>';
+   }
+   console.log(htmlToInsert)
+   myDiv.innerHTML = htmlToInsert;
 }
 /*
 

@@ -1,76 +1,73 @@
-h1#logo
-{
-	color:#FFFFFF;
-	font-size: 48px;
+h1#logo {
+    color: #FFFFFF;
+    font-size: 48px;
+}
+h2,
+h3 {
+    font-size: 42px;
+    color: #212121;
+}
+p,
+li {
+    color: #212121;
+    font-size: 36px;
+    line-height: 40px;
+}
+#header {
+    background: #272833;
+    border-bottom: 10px;
+    border-top: 10px;
 }
 
-h2, h3 {
-	font-size: 42px;
-	color: #212121;
-
+#heat{
+	background-repeat:no-repeat;
+	background-size: 100%; 
+	border-width: 0px;
 }
-
-p,li{
-	color:#212121;
-	font-size: 36px;
-	line-height: 40px;
-
+html,
+body {
+    background: #c0c0c0;
 }
-
-#header{
-	background:#272833;
-	border-bottom: 10px;
-	border-top:10px; 
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+.button {
+    color: #FFFFFF !important;
+    text-color: #FFFFFF;
+    box-shadow: inset 0 0 0 1px #009688;
+    background: #009688
 }
-html, body{
-	background:#c0c0c0;
-}
-
-input[type="submit"], input[type="reset"], input[type="button"], .button{
-	color: #FFFFFF !important;
-	text-color:#FFFFFF;
-	box-shadow: inset 0 0 0 1px #009688; 
-	background: #009688
-}
-
 ul li {
-	color:#000000;
+    color: #000000;
 }
-
-div.row.150%{
-border-top-color: #FFFFFF;
+div.row.150% {
+    border-top-color: #FFFFFF;
 }
-
-  rect.bordered {
-        stroke: #bbb;
-        stroke-width:3px;   
-      }
-
-      text.mono {
-        font-size: 9pt;
-        font-family: verdana;
-        fill: #aaa;
-      }
-
-      text.mono:hover {
-        font-size: 12pt;
-        font-family: verdana;
-        fill: #aaa;
-        font-weight: bold;
-      }
-
-      .square {
-        opacity: 0.5;
-      }
-      
-      .square:hover {
-        opacity: 1.0;
-      }
-
-      .d3-tip {
-        font-family: Verdana;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 8px;
-        color: #fff; 
-        z-index: 5070;
-      }
+rect.bordered {
+    stroke: #bbb;
+    stroke-width: 3px;
+}
+text.mono {
+    font-size: 9pt;
+    font-family: verdana;
+    fill: #aaa;
+}
+text.mono:hover {
+    font-size: 12pt;
+    font-family: verdana;
+    fill: #aaa;
+    font-weight: bold;
+}
+.square {
+    opacity: 0.5;
+}
+.square:hover {
+    opacity: 1.0;
+}
+.d3-tip {
+    font-family: Verdana;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 8px;
+    color: #fff;
+    z-index: 5070;
+}

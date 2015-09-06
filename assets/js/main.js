@@ -1,306 +1,70 @@
+function parser() {
+    var xmlhttp = XMLHttpRequest();
+    xmlhttp.open("GET", "http//:sayumm.cloudapp.net/latest", true);
+    xmlhttp.send();
+    xmlhttp.onload = myCallback;
+}
+
+
+function myCallback(e) {
+    xmlDoc = JSON.parse(this.responseXML);
+    document.getElementById("sentiment").value = xmlDoc.sentiment; //sentiment
+
+    for (var i = 0; i < responseXML.transcript.length; i++) {
+        var transcript = " " + responseXML.transcript[i];
+    }
+
+
+    document.getElementById("speechtext").value = transcript; // temp text
+
+    document.getElementById("ums_total").value = responseXML.ums_total; // ums total
+
+    document.getElementById("wpm").value = responseXML.wpm; // wrods per min
+
+    document.getElementById("upm").value = responseXML.upm; // upms per min
+
+    document.getElementById("words_total").value = responseXML.words_total; // words total
+
+
+ //      var opa1 = 1- responseXML.panel1 ;
+ //    var opa2 =  1-responseXML.panel2 ;
+
+	// var opa3 = 1- responseXML.panel3 ;
+
+	// var opa4 =  1-responseXML.panel4 ;
+
+	// var opa5 =  1-responseXML.panel5 ;
+	// var opa6 =  1-responseXML.panel6 ;
+
+	// var opa7 =  1-responseXML.panel7 ;
+	// var opa8=  1-responseXML.panel8 ;
+
+	// var opa9 =  1- responseXML.panel9 ;
+
+
+ // 	document.getElementById("panel1").style.color= rgba(0,0,255,opa1);
+ //    document.getElementById("panel2").style.color = rgba(0,0,255,opa2);
+ //    document.getElementById("panel3").style.color = rgba(0,0,255,opa3);
+ //    document.getElementById("panel4").style.color= rgba(0,0,255,opa4);
+ //    document.getElementById("panel5").style.color = rgba(0,0,255,opa5);
+ //    document.getElementById("panel6").style.color = rgba(0,0,255,opa6);
+ //    document.getElementById("panel7").style.color = rgba(0,0,255,opa7);
+ //    document.getElementById("panel8").style.color = rgba(0,0,255,opa8);
+ //    document.getElementById("panel9").style.color= rgba(0,0,255,opa9);
+
+}  
+
+
 /*
-	Landed by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
-(function($) {
+document.getElementById("word_times").value = responseXML.word_times;
 
-	skel.breakpoints({
-		xlarge: '(max-width: 1680px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)'
-	});
+document.getElementById("").value = responseXML.;
 
-	$(function() {
+document.getElementById("").value = responseXML.;
 
-		var	$window = $(window),
-			$body = $('body');
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
 
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 0);
-			});
 
-		// Touch mode.
-			if (skel.vars.mobile)
-				$body.addClass('is-touch');
-
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
-
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
-
-		// Scrolly links.
-			$('.scrolly').scrolly({
-				speed: 2000
-			});
-
-		// Dropdowns.
-			$('#nav > ul').dropotron({
-				alignment: 'right',
-				hideDelay: 350
-			});
-
-		// Off-Canvas Navigation.
-
-			// Title Bar.
-				$(
-					'<div id="titleBar">' +
-						'<a href="#navPanel" class="toggle"></a>' +
-						'<span class="title">' + $('#logo').html() + '</span>' +
-					'</div>'
-				)
-					.appendTo($body);
-
-			// Navigation Panel.
-				$(
-					'<div id="navPanel">' +
-						'<nav>' +
-							$('#nav').navList() +
-						'</nav>' +
-					'</div>'
-				)
-					.appendTo($body)
-					.panel({
-						delay: 500,
-						hideOnClick: true,
-						hideOnSwipe: true,
-						resetScroll: true,
-						resetForms: true,
-						side: 'left',
-						target: $body,
-						visibleClass: 'navPanel-visible'
-					});
-
-			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
-				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-					$('#titleBar, #navPanel, #page-wrapper')
-						.css('transition', 'none');
-
-		// Parallax.
-		// Disabled on IE (choppy scrolling) and mobile platforms (poor performance).
-			if (skel.vars.browser == 'ie'
-			||	skel.vars.mobile) {
-
-				$.fn._parallax = function() {
-
-					return $(this);
-
-				};
-
-			}
-			else {
-
-				$.fn._parallax = function() {
-
-					$(this).each(function() {
-
-						var $this = $(this),
-							on, off;
-
-						on = function() {
-
-							$this
-								.css('background-position', 'center 0px');
-
-							$window
-								.on('scroll._parallax', function() {
-
-									var pos = parseInt($window.scrollTop()) - parseInt($this.position().top);
-
-									$this.css('background-position', 'center ' + (pos * -0.15) + 'px');
-
-								});
-
-						};
-
-						off = function() {
-
-							$this
-								.css('background-position', '');
-
-							$window
-								.off('scroll._parallax');
-
-						};
-
-						skel.on('change', function() {
-
-							if (skel.breakpoint('medium').active)
-								(off)();
-							else
-								(on)();
-
-						});
-
-					});
-
-					return $(this);
-
-				};
-
-				$window
-					.on('load resize', function() {
-						$window.trigger('scroll');
-					});
-
-			}
-
-		// Spotlights.
-			var $spotlights = $('.spotlight');
-
-			$spotlights
-				._parallax()
-				.each(function() {
-
-					var $this = $(this),
-						on, off;
-
-					on = function() {
-
-						// Use main <img>'s src as this spotlight's background.
-							$this.css('background-image', 'url("' + $this.find('.image.main > img').attr('src') + '")');
-
-						// Enable transitions (if supported).
-							if (skel.canUse('transition')) {
-
-								var top, bottom, mode;
-
-								// Side-specific scrollex tweaks.
-									if ($this.hasClass('top')) {
-
-										mode = 'top';
-										top = '-20%';
-										bottom = 0;
-
-									}
-									else if ($this.hasClass('bottom')) {
-
-										mode = 'bottom-only';
-										top = 0;
-										bottom = '20%';
-
-									}
-									else {
-
-										mode = 'middle';
-										top = 0;
-										bottom = 0;
-
-									}
-
-								// Add scrollex.
-									$this.scrollex({
-										mode:		mode,
-										top:		top,
-										bottom:		bottom,
-										initialize:	function(t) { $this.addClass('inactive'); },
-										terminate:	function(t) { $this.removeClass('inactive'); },
-										enter:		function(t) { $this.removeClass('inactive'); },
-
-										// Uncomment the line below to "rewind" when this spotlight scrolls out of view.
-
-										//leave:	function(t) { $this.addClass('inactive'); },
-
-									});
-
-							}
-
-					};
-
-					off = function() {
-
-						// Clear spotlight's background.
-							$this.css('background-image', '');
-
-						// Disable transitions (if supported).
-							if (skel.canUse('transition')) {
-
-								// Remove scrollex.
-									$this.unscrollex();
-
-							}
-
-					};
-
-					skel.on('change', function() {
-
-						if (skel.breakpoint('medium').active)
-							(off)();
-						else
-							(on)();
-
-					});
-
-				});
-
-		// Wrappers.
-			var $wrappers = $('.wrapper');
-
-			$wrappers
-				.each(function() {
-
-					var $this = $(this),
-						on, off;
-
-					on = function() {
-
-						if (skel.canUse('transition')) {
-
-							$this.scrollex({
-								top:		250,
-								bottom:		0,
-								initialize:	function(t) { $this.addClass('inactive'); },
-								terminate:	function(t) { $this.removeClass('inactive'); },
-								enter:		function(t) { $this.removeClass('inactive'); },
-
-								// Uncomment the line below to "rewind" when this wrapper scrolls out of view.
-
-								//leave:	function(t) { $this.addClass('inactive'); },
-
-							});
-
-						}
-
-					};
-
-					off = function() {
-
-						if (skel.canUse('transition'))
-							$this.unscrollex();
-
-					};
-
-					skel.on('change', function() {
-
-						if (skel.breakpoint('medium').active)
-							(off)();
-						else
-							(on)();
-
-					});
-
-				});
-
-		// Banner.
-			var $banner = $('#banner');
-
-			$banner
-				._parallax();
-
-	});
-
-})(jQuery);
+results['transcript'] = [(string, number, number, number), ...]
+results['word_times'] = [(number, number), ...] */

@@ -77,8 +77,9 @@
                             <section>
 
                                 <h3>Engagement</h3>
-                                <div id="heatmap">
-                               
+                                <div id="heatmap" style="background-image: url(heat.png);
+  background-size: contain;background-repeat: no-repeat">
+                               <canvas id="canvas"  height=200 width=300 ></canvas>
                                 </div>
 
 
@@ -93,7 +94,7 @@
                             <section>
 
                                 <h3>Body Language</h3>
-                                <p>Pebble Engagement</p>
+                                <p>Pebble Engagement(static data)</p>
 
                                <p><span id="random"></span> Out of 10</p>
                                 <footer>
@@ -167,7 +168,7 @@
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
-
+<script src="assets/js/simpleheat.js"></script>
         <script src="assets/js/main.js"></script>
 
 

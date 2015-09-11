@@ -37,10 +37,51 @@ function myCallback(e) {
 			trans_total = trans_total +1;
 		}
 	}
+
+var intensity=9;
+var data1=getDataPoints([[50,35,intensity]],Math.round(xmlDoc.panel_data.panel1*10))
+var data2=getDataPoints([[150,35,intensity]],Math.round(xmlDoc.panel_data.panel2*10))
+var data3=getDataPoints([[250,35,intensity]],Math.round(xmlDoc.panel_data.panel3*10))
+var data4=getDataPoints([[50,105,intensity]],Math.round(xmlDoc.panel_data.panel4*10))
+var data5=getDataPoints([[150,105,intensity]],Math.round(xmlDoc.panel_data.panel5*10))
+var data6=getDataPoints([[250,105,intensity]],Math.round(xmlDoc.panel_data.panel6*10))
+var data7=getDataPoints([[175,175,intensity]],Math.round(xmlDoc.panel_data.panel7*10))
+var data8=getDataPoints([[150,175,intensity]],Math.round(xmlDoc.panel_data.panel8*10))
+var data9=getDataPoints([[250,175,intensity]],Math.round(xmlDoc.panel_data.panel9*10))
+
+
+
+var allData=data1.concat(data2,data3,data4,data5,data6,data7,data8,data9)
+
+//window.alert(data4)
+
+  var heat = simpleheat('canvas').data(allData),
+    frame;
+
+  draw(heat);
+
 	document.getElementById("trans_total").innerHTML = trans_total;
 	colorByConfidence(xmlDoc.transcript);
 	return 0;
 }
+
+function draw(heat) {
+    console.time('draw');
+    heat.draw();
+    console.timeEnd('draw');
+    frame = null;
+}
+
+function getDataPoints(data,numberOfTimes)
+{
+  val=data[0]
+  if(numberOfTimes==0)
+    return [];
+  for(var i=0;i<numberOfTimes;i++)
+      val.push(data[0])
+  return val;
+}
+
 
 
 
